@@ -60,7 +60,8 @@ textarea:hover {
 }
 .list{
     width: 400px;
-    height: 60px;
+    min-height: 60px;
+    /* height: 160px; */
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -69,4 +70,15 @@ textarea:hover {
     font-size: 15px;
     border-radius: 10px;
     text-transform: capitalize;
+    border: 2px solid black;
+    cursor: pointer;
+    line-height: 4vh;
+    letter-spacing: 5px;
+    padding: 10px 10px;
+}
+.list:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+.head{
+    margin-top: 30px;
 }
