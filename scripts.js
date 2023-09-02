@@ -41,12 +41,18 @@ function createDb() {
 		const objectStore = transaction.objectStore("toDo");
 		objectStore.openCursor().onsuccess = (event) => {
 			const cursor = event.target.result;
+
 			if (cursor) {
 				const data = cursor.value;
 				var randomColor = Math.floor(Math.random() * colors.length);
 				bodyEl = document.createElement("article");
 				bodyEl.classList.add("list");
 				bodyEl.innerText = data.body;
+				bodyEl.innerHTML = `
+				${data.body}
+        <span class="delete" id="delete">
+        </span>
+        `;
 				bodyEl.style.color = "white";
 				bodyEl.style.backgroundColor = colors[randomColor];
 				body.appendChild(bodyEl);
@@ -68,8 +74,8 @@ function createDb() {
 		alert(`error is called ${e.target.error}`);
 	};
 }
-
 // console.log(randomColor);
+// This function adds items to the indexeddb
 function createList(value) {
 	const todo = {
 		body: value,
@@ -77,18 +83,14 @@ function createList(value) {
 	const tx = db.transaction("toDo", "readwrite");
 	const toDo = tx.objectStore("toDo");
 	toDo.add(todo);
-	// bodyEl = document.createElement("article");
-	// bodyEl.classList.add("list");
-	// bodyEl.innerText = value;
-	// bodyEl.style.color = "white";
-	// bodyEl.style.backgroundColor = colors[randomColor];
-	// body.appendChild(bodyEl);
 }
 
+// This acts as an event Listener
 btn.onclick = (e) => {
 	var value = screen.value;
 	console.log(value);
 	createList(value);
 	location.reload();
 };
+
 createDb();

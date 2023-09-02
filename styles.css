@@ -82,3 +82,16 @@ textarea:hover {
 .head{
     margin-top: 30px;
 }
+.delete{
+   margin-left: 230px;
+   min-width: 25px;
+   min-height: 25px;
+   background-color: rgb(243, 19, 19);
+   border-radius: 8px;
+   text-align: center;
+   font-size: 1px;
+}
+.delete:hover{
+    transform: scale(0.7);
+    cursor: pointer;
+}
